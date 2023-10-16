@@ -55,6 +55,7 @@ public class ToDoController {
     @PostMapping("/addtodo")
     ResponseEntity<ToDoResponse> addToDo(@Valid @RequestBody ToDoRequest toDoRequest, UsernamePasswordAuthenticationToken auth){
             UserModel userModel=(UserModel)auth.getPrincipal();
+            System.out.println("ciao");
             ToDoModel todoCreate=toDoService.saveTodo(toDoRequest,userModel);
             return new ResponseEntity<>(modelMapper.map(todoCreate,ToDoResponse.class),HttpStatus.CREATED);
     }
